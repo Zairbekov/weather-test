@@ -1,0 +1,36 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-4 col-md-offset-4">
+      <div class="weather">
+        <select #selectC (change)="get(selectC.value)">
+          <option selected value="42.882004,74.582748">Bishkek</option>
+          <option value="40.5282800,72.7985000">Osh</option>
+          <option value="41.4286600,75.9911100">Naryn</option>
+        </select>
+        <div class="current">
+          <div class="info">
+            <div class="icon">
+              <img src={{condition.icon}}>
+            </div>
+            <div>&nbsp;</div>
+            <div class="city"><small><small>City:</small></small> {{location.name}}</div>
+            <div class="temp">{{current.temp_c}}&deg;C</div>
+            <div class="desc">Desciption:{{condition.text}}</div>
+            <div class="wind">Wind:{{current.wind_kph}} km/h</div>
+            <div class="curday">Date:{{location.localtime | date:'fullDate'}}</div>
+            <div>&nbsp;</div>
+          </div>
+        </div>
+        <div class="future">
+          <div class="day" *ngFor="let day of forecast" >
+            <h3>{{ day.date | date}}</h3>
+            <img src={{day.day.condition.icon}}>
+            <h4>{{day.day.maxtemp_c}}&deg;C</h4>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
